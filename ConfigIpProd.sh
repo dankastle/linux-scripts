@@ -38,7 +38,12 @@ setNewGw() {
         }
 
 setIp() {
-    printf "NAME=$ifPro\n""DEVICE=$ifPro\n""ONBOOT=yes\n""BOOTPROTO=static\n""IPADDR=$ipPro\n""PREFIX=$netMask\n" > /etc/sysconfig/network-scripts/ifcfg-$ifPro
+    printf "NAME=$ifPro\n"
+    "DEVICE=$ifPro\n"
+    "ONBOOT=yes\n"
+    "BOOTPROTO=static\n"
+    "IPADDR=$ipPro\n"
+    "PREFIX=$netMask\n" > /etc/sysconfig/network-scripts/ifcfg-$ifPro
 }
 
 setDns() {
