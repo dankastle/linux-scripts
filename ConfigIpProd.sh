@@ -9,10 +9,9 @@
 # DESCRIPTION
 # This script set the production ip address and default route
 ##############################################################
-if [ $# -lt 2 ];
-    then
-        printf "%s\n" "usage $0 <macProd> <ip/mask> [gw] [dns1][dns2]"  >&2
-exit 1
+if [ $# -lt 2 ]; then
+  printf "%s\n" "usage $0 <macProd> <ip/mask> [gw] [dns1][dns2]"  >&2
+  exit 1
 fi
 
 #Variables
@@ -47,45 +46,38 @@ setIp() {
 }
 
 setDns() {
-if [[ "$dns1" != "-" ]];
-	then
-		printf "DNS1=$dns1\n" >> /etc/sysconfig/network-scripts/ifcfg-$ifPro
-	fi		
-	if [[ "$dns2" != "-" ]];
-	then
-		printf "DNS2=$dns2\n" >> /etc/sysconfig/network-scripts/ifcfg-$ifPro
+if [[ "$dns1" != "-" ]]; then
+  printf "DNS1=$dns1\n" >> /etc/sysconfig/network-scripts/ifcfg-$ifPro
+fi		
+
+if [[ "$dns2" != "-" ]]; then
+  printf "DNS2=$dns2\n" >> /etc/sysconfig/network-scripts/ifcfg-$ifPro
 fi
 }
 
 #Code
-if [[ "$gateWay" != "-" ]] && [[ "$gateWay" =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$ ]];
-then
-setNewGw
-setDns	
-ifdown $ifPro > /dev/null 2>&1
-ifup $ifPro > /dev/null 2>&1
+if [[ "$gateWay" != "-" ]] && [[ "$gateWay" =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+  setNewGw
+  setDns	
+  ifdown $ifPro > /dev/null 2>&1
+  ifup $ifPro > /dev/null 2>&1
 
-    if [ $? -eq 0 ];
-        then
-            result="ok"
-        else
-            result="There was a problem setting IPADDR and GATEWAY"
-                    exit 1
+    if [ $? -eq 0 ]; then
+      result="ok"
+    else
+      result="There was a problem setting IPADDR and GATEWAY"
+      exit 1
     fi
-
 else
-setIp
-setDns	
-ifdown $ifPro > /dev/null 2>&1
-ifup $ifPro > /dev/null 2>&1
-    if [ $? -eq 0 ];
-        then
-            result="ok"
-        else
-            result="There was a problem setting IPADDR"
-                    exit 1
+  setIp
+  setDns	
+  ifdown $ifPro > /dev/null 2>&1
+  ifup $ifPro > /dev/null 2>&1
+    if [ $? -eq 0 ]; then
+      result="ok"
+    else
+      result="There was a problem setting IPADDR"
+      exit 1
     fi
-
 fi
-
 printf "%s" "$result"
