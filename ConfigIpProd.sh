@@ -28,7 +28,13 @@ ifPro=$(ip add sh | grep -B 1 $macPro | head -1 | cut -d ":" -f 2 | sed  's/ //g
 #Functions
 setNewGw() {
     sed -i -e "s/GATEWAY=*//g" /etc/sysconfig/network-scripts/ifcfg-*
-    printf "NAME=$ifPro\n""DEVICE=$ifPro\n""ONBOOT=yes\n""BOOTPROTO=static\n""IPADDR=$ipPro\n""PREFIX=$netMask\n""GATEWAY=$gateWay\n" > /etc/sysconfig/network-scripts/ifcfg-$ifPro
+    printf "NAME=$ifPro\n"
+    "DEVICE=$ifPro\n"
+    "ONBOOT=yes\n"
+    "BOOTPROTO=static\n"
+    "IPADDR=$ipPro\n"
+    "PREFIX=$netMask\n"
+    "GATEWAY=$gateWay\n" > /etc/sysconfig/network-scripts/ifcfg-$ifPro
         }
 
 setIp() {
