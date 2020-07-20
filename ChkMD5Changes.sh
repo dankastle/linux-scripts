@@ -2,8 +2,8 @@
 #######################################
 # Check and log changes in /etc/passwd file
 # Written by Daniel Castillo
-#   18/07/2020
-#   Run as root
+# 18/07/2020
+# Run as root
 #######################################
 
 #Variables
