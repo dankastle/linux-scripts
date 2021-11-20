@@ -1,3 +1,10 @@
+#!/bin/bash
+#######################################
+# Check VM instances in every gcloud project
+# Written by Daniel Castillo
+# 19/11/2021
+#######################################
+
 #The below line will do an action for every project in the project list
 for project in $(gcloud projects list --format='(project_id)' | egrep -v 'PROJECT_ID');
 do
