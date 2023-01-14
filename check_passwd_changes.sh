@@ -1,10 +1,15 @@
 #!/bin/bash
-#######################################
+###########################################
+# check_passwd_changes.sh
+# by Daniel Castillo
+# Jul, 2020
+# REVISION HISTORY
+# Version 1.0
+# DESCRIPTION
 # Check and log changes in /etc/passwd file
-# Written by Daniel Castillo
-# 18/07/2020
-# Run as root
-#######################################
+# run as root
+###########################################
+
 
 #Variables
 get_md5hash=$(cut -d : -f 1,6 /etc/passwd | md5sum)
