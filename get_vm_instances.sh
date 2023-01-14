@@ -1,10 +1,15 @@
 #!/bin/bash
-#######################################
-# Check VM instances in every gcloud project
-# Written by Daniel Castillo
-# 19/11/2021
-#######################################
-#The below line will do an action for every project in the project list
+##############################################################
+# get_vm_instances.sh
+# by Daniel Castillo
+# Nov, 2021
+# REVISION HISTORY
+# Version 1.0
+# DESCRIPTION
+# This script check VM instances in every gcloud project
+##############################################################
+
+# --- Options processing -------------------------------------------
 for project in $(cat projects.txt); do
  #This gcloud command will run for every instance of project in projectlist
  gcloud config set project $project
