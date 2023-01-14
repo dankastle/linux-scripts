@@ -1,6 +1,6 @@
 #!/bin/bash
 ##############################################################
-# prodNetwork.sh
+# conf_prod_net.sh
 # by Daniel Castillo
 # April 24, 2018
 # usage $0 <macPro> <ip/mask> [gw] [dns1] [dns2]
